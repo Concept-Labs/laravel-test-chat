@@ -60,7 +60,7 @@ php artisan queue:work
 
 - Open chat UI:
 
-`/test-chat`
+`/tchat`
 
 All are protected by `web` + `auth` by default.
 
