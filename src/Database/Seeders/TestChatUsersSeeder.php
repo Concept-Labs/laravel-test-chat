@@ -21,7 +21,7 @@ class TestChatUsersSeeder extends Seeder
                 'id' => 50,
                 'name' => 'Victor Galitsky',
                 'email' => 'concept.galitsky@gmail.com',
-                'remember_token' => 'eDy1FEtPzDyIU6B4feKCysUUyzq3N963dxHTWTP5uy6ddWNRXAiuMAvclpZg',
+                'remember_token' => '',
             ],
             [
                 'id' => 51,
