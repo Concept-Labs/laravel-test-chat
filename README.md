@@ -24,7 +24,7 @@ composer require laravel/breeze --dev
 php artisan breeze:install
 npm install && npm run build
 php artisan migrate
-php artisan test-chat:install
+php artisan test-chat:install --seed
 ```
 
 - Configure `.env` for Redis + Reverb:

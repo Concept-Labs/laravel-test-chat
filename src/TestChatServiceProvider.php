@@ -42,10 +42,15 @@ class TestChatServiceProvider extends ServiceProvider
         ], 'test-chat-views');
 
         $this->publishes([
+            __DIR__.'/Database/Seeders/TestChatUsersSeeder.php' => database_path('seeders/TestChatUsersSeeder.php'),
+        ], 'test-chat-seeders');
+
+        $this->publishes([
             __DIR__.'/../config/test-chat.php' => config_path('test-chat.php'),
             __DIR__.'/../public' => public_path(config('test-chat.asset_path', 'vendor/test-chat')),
             __DIR__.'/../database/migrations' => database_path('migrations'),
             __DIR__.'/../resources/views' => resource_path('views/vendor/test-chat'),
+            __DIR__.'/Database/Seeders/TestChatUsersSeeder.php' => database_path('seeders/TestChatUsersSeeder.php'),
         ], 'test-chat-install');
 
         if ($this->app->runningInConsole()) {
