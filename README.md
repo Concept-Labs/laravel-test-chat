@@ -19,7 +19,7 @@
 - Install package + host auth (example with Breeze):
 
 ```bash
-composer require mtr/mtr/laravel-test-chat:dev-main
+composer require mtr/laravel-test-chat:dev-main
 composer require laravel/breeze --dev
 php artisan breeze:install
 npm install && npm run build
