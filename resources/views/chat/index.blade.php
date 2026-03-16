@@ -45,8 +45,27 @@
         </div>
     </aside>
 
+    <button
+        id="tc-sidebar-backdrop"
+        class="tc-sidebar-backdrop"
+        type="button"
+        aria-label="Close users list"
+        aria-hidden="true"
+        tabindex="-1"
+    ></button>
+
     <section class="tc-chat">
         <header class="tc-chat-head">
+            <button
+                id="tc-users-toggle"
+                class="tc-users-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="tc-users"
+            >
+                <span class="tc-users-toggle-bars" aria-hidden="true"></span>
+                <span class="tc-users-toggle-label">Users</span>
+            </button>
             <h1 id="tc-chat-title">{{ $selectedUser?->name ?? 'Select user' }}</h1>
         </header>
 

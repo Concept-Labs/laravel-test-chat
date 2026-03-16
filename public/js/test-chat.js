@@ -19,10 +19,28 @@
     const sendUrlTemplate = root.dataset.sendUrlTemplate || '';
 
     const usersContainer = document.getElementById('tc-users');
+    const usersToggle = document.getElementById('tc-users-toggle');
+    const sidebarBackdrop = document.getElementById('tc-sidebar-backdrop');
     const chatTitle = document.getElementById('tc-chat-title');
     const messagesContainer = document.getElementById('tc-messages');
     const sendForm = document.getElementById('tc-send-form');
     const messageInput = document.getElementById('tc-message-input');
+
+    const mobileMediaQuery = window.matchMedia('(max-width: 960px)');
+
+    function isMobileView() {
+        return mobileMediaQuery.matches;
+    }
+
+    function setUsersMenuOpen(isOpen) {
+        root.classList.toggle('is-users-open', isOpen);
+        usersToggle?.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        document.body.classList.toggle('tc-lock-scroll', isOpen && isMobileView());
+    }
+
+    function closeUsersMenu() {
+        setUsersMenuOpen(false);
+    }
 
     function urlFor(template, userId) {
         return template.replace('__USER__', String(userId));
@@ -123,8 +141,30 @@
 
         try {
             await loadConversation(userId);
+            if (isMobileView()) {
+                closeUsersMenu();
+            }
         } catch (error) {
             console.error(error);
+        }
+    });
+
+    usersToggle?.addEventListener('click', () => {
+        const nextIsOpen = !root.classList.contains('is-users-open');
+        setUsersMenuOpen(nextIsOpen);
+    });
+
+    sidebarBackdrop?.addEventListener('click', closeUsersMenu);
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            closeUsersMenu();
+        }
+    });
+
+    mobileMediaQuery.addEventListener('change', (event) => {
+        if (!event.matches) {
+            closeUsersMenu();
         }
     });
 
