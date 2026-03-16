@@ -62,6 +62,13 @@ php artisan queue:work
 
 `/tchat`
 
+- available users:
+  `oleg@test.com`
+  `serzh@test.com`
+  `ruslan@test.com`
+
+  All have password: `password`
+
 All are protected by `web` + `auth` by default.
 
 
